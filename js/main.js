@@ -1,10 +1,11 @@
-
+/* vARIABLE declare */
+const basePrice = document.getElementById('best-price');
 const memoryCostTotal = document.getElementById('memory-cost');
 const storageCostTotal = document.getElementById('storage-cost');
 const deliveryCost = document.getElementById('delivery-cost');
-
-const basePrice = document.getElementById('best-price');
 const totalAmount = document.getElementById('total-price');
+const promoCode = document.getElementById('promo-code');
+const discountPriceFirst = document.getElementById('discount-price');
 
 /* Extra memory cost  */
 
@@ -48,13 +49,38 @@ document.getElementById('delivery-paid').addEventListener('click', function () {
 // update total price 
 
 function totalCost() {
-   
     const bestPrice = parseFloat(basePrice.innerText);
     const extraMemoryCost = parseFloat(memoryCostTotal.innerText);
     const extraStorageCost = parseFloat(storageCostTotal.innerText);
-    const expressDeliveryCost = parseFloat(deliveryCost.innerText)
+    const expressDeliveryCost = parseFloat(deliveryCost.innerText);
+    const typedCode = promoCode.value;
     const totalPrice = bestPrice + extraMemoryCost + extraStorageCost + expressDeliveryCost;
     totalAmount.innerText = totalPrice;
+    if (typedCode == 'stevekaku') {
+        const discountPriceTotal = totalPrice * 20 / 100;
+        discountPriceFirst.innerText = totalPrice - discountPriceTotal;
+    }
+    else {
+        discountPriceFirst.innerText = totalPrice;
+    }
+    promoCode.value = '';
     return totalAmount;
-
 }
+
+// promo code apply 
+// function promoApply() {
+    
+    
+//     if (typedCode == 'stevekaku') {
+//         const discountPriceTotal = totalAmount * 20 / 100;
+//         discountPriceFirst.innerText = totalAmount - discountPriceTotal;
+//     }
+//     else {
+//         discountPriceFirst.innerText = totalAmount;
+//     }
+    
+// }
+
+document.getElementById('promo-btn').addEventListener('click', function () {
+    totalCost();
+})
