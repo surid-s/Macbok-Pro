@@ -67,19 +67,6 @@ function totalCost() {
     return totalAmount;
 }
 
-// promo code apply 
-// function promoApply() {
-    
-    
-//     if (typedCode == 'stevekaku') {
-//         const discountPriceTotal = totalAmount * 20 / 100;
-//         discountPriceFirst.innerText = totalAmount - discountPriceTotal;
-//     }
-//     else {
-//         discountPriceFirst.innerText = totalAmount;
-//     }
-    
-// }
 
 document.getElementById('promo-btn').addEventListener('click', function () {
     totalCost();
